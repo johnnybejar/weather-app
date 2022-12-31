@@ -17,6 +17,7 @@ function App() {
             setWeather(result);
             setQuery('');
             console.log(result);
+            console.log(result.main.temp)
           }
         )
       )
@@ -32,10 +33,14 @@ function App() {
       value={query}
       onKeyUp={searchWeatherInfo}
       />
-      <div
-      className='current-weather'
-
-      />
+      {(weather.main) ? (
+      <div className='queried-weather'>
+        <strong>{weather.name}</strong> <br></br> 
+        Temperature: {Math.ceil(weather.main.temp)}&deg;F <br></br> 
+        Weather: {weather.weather[0].main} <br></br> 
+        Wind Speed: {weather.wind.speed} mph
+      </div>
+      ) : ('')}
     </div>
   )
 }
