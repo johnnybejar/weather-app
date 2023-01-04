@@ -4,6 +4,12 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
+  const grabDate = () => {
+    const date = new Date();
+    let time = date.getDate();
+    console.log(time);
+  }
+
   const API = {
     key: '9f5e8b054a638a95bb11203257eba88c',
     base: 'https://api.openweathermap.org/data/2.5/'
@@ -25,8 +31,9 @@ function App() {
   }
 
   return (
-    <div>
+    <main>
       <input
+      className='search-bar'
       type="text"
       placeholder='Search'
       onChange={e => setQuery(e.target.value)}
@@ -34,14 +41,14 @@ function App() {
       onKeyUp={searchWeatherInfo}
       />
       {(weather.main) ? (
-      <div className='queried-weather'>
+      <div className='weather'>
         <strong>{weather.name}</strong> <br></br> 
-        Temperature: {Math.ceil(weather.main.temp)}&deg;F <br></br> 
-        Weather: {weather.weather[0].main} <br></br> 
-        Wind Speed: {weather.wind.speed} mph
+        <span className='temperature'>{Math.round(weather.main.temp)}&deg;F</span> <br></br> 
+        Weather: <u>{weather.weather[0].main}</u> <br></br> 
+        Wind: <u>{Math.round(weather.wind.speed)}mph</u> 
       </div>
       ) : ('')}
-    </div>
+    </main>
   )
 }
 
