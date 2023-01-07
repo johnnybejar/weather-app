@@ -1,7 +1,23 @@
 * {
     /* margin: auto; */
+    color: white;
     text-align: center;
     vertical-align: center;
+}
+
+/* 0.62273086 */
+.main {
+    padding-top: .5em;
+    /* max-width: 435.912px;
+    height: 700px; */
+    max-width: 62.273%;
+    height: 43.75em;
+    background-image: url('../public/nature-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid black;
+    /* background-position: top center; */
+    /* background-attachment: fixed; */
 }
 
 .search-bar {
@@ -11,10 +27,27 @@
 .weather {
     margin: 0 auto;
     margin-top: .4em;
-    width: 35%;
-    border: 2px solid black;
+    width: 45%;
+    max-width: 350px;
+    border: 2px solid white;
+}
+
+.city-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5em;
+}
+
+#icon {
+    max-width: 25%;
+    
 }
 
 .temperature {
     font-size: 2.5em;
+}
+
+input {
+    color: black;
 }

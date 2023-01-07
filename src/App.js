@@ -3,17 +3,15 @@ import React, { useState } from 'react';
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
-
-  const grabDate = () => {
-    const date = new Date();
-    let time = date.getDate();
-    console.log(time);
-  }
+  const [icon, setIcon] = useState('');
 
   const API = {
     key: '9f5e8b054a638a95bb11203257eba88c',
     base: 'https://api.openweathermap.org/data/2.5/'
   }
+
+  let iconURL = 'http://openweathermap.org/img/w/' + icon + ".png";
+
 
   const searchWeatherInfo = evt => {
     if (evt.key === "Enter") {
@@ -22,6 +20,7 @@ function App() {
           result => {
             setWeather(result);
             setQuery('');
+            setIcon(result.weather[0].icon);
             console.log(result);
             console.log(result.main.temp)
           }
@@ -31,7 +30,7 @@ function App() {
   }
 
   return (
-    <main>
+    <main className='main'>
       <input
       className='search-bar'
       type="text"
@@ -42,7 +41,11 @@ function App() {
       />
       {(weather.main) ? (
       <div className='weather'>
-        <strong>{weather.name}</strong> <br></br> 
+        <div className='city-icon'>
+          <strong>{weather.name}, {weather.sys.country}</strong> <br></br> 
+          {(iconURL != '') ? (
+          <img id='icon' src={iconURL}></img>) : ('')}
+        </div>
         <span className='temperature'>{Math.round(weather.main.temp)}&deg;F</span> <br></br> 
         Weather: <u>{weather.weather[0].main}</u> <br></br> 
         Wind: <u>{Math.round(weather.wind.speed)}mph</u> 
