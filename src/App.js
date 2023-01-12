@@ -22,7 +22,6 @@ function App() {
             setQuery('');
             setIcon(result.weather[0].icon);
             console.log(result);
-            console.log(result.main.temp)
           }
         )
       )
@@ -43,8 +42,8 @@ function App() {
       <div className='weather'>
         <div className='city-icon'>
           <strong>{weather.name}, {weather.sys.country}</strong> <br></br> 
-          {(iconURL != '') ? (
-          <img id='icon' src={iconURL}></img>) : ('')}
+          {(iconURL !== '') ? (
+          <img id='icon' alt='weather-icon' src={iconURL}></img>) : ('')}
         </div>
         <span className='temperature'>{Math.round(weather.main.temp)}&deg;F</span> <br></br> 
         Weather: <u>{weather.weather[0].main}</u> <br></br> 
