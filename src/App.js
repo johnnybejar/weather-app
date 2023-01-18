@@ -41,7 +41,7 @@ function App() {
       {(weather.main) ? (
       <div className='weather'>
         <div className='city-icon'>
-          <strong>{weather.name}, {weather.sys.country}</strong> <br></br> 
+          <strong>{weather.name}, {weather.sys.country}</strong> <br></br>
           {(iconURL !== '') ? (
           <img id='icon' alt='weather-icon' src={iconURL}></img>) : ('')}
         </div>
